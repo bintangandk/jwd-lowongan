@@ -413,7 +413,7 @@ $no = 0;
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="kelolabuku.php?ubah=<?php echo $result['kode_anggota']; ?>" type="button" class="btn btn-warning btn-sm">
+                                                <a href="edit-anggota.php" type="button" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
                                                 <a href="buku-process.php?hapus=<?php echo $result['kode_anggota']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Ingin menghapus data tersebut?')">

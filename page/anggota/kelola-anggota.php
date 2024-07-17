@@ -5,6 +5,10 @@ session_start();
 $query = "SELECT * FROM anggotas;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
+
+
+
+
 ?>
 
 
@@ -383,7 +387,12 @@ $no = 0;
                                         <label for="alamat">Alamat</label>
                                         <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat" required>
                                     </div>
-                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    <div>
+                                        <a href="daftar-anggota.php" class="btn btn-danger float-right ml-2">Batal</a>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

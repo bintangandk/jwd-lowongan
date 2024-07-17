@@ -4,12 +4,9 @@ require_once("../../function/koneksi.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kode_buku =$_POST['kode_buku'];
-    $judul = $_POST['judul'];
-    $genre = $_POST['genre'];
-    $tanggal_terbit = $_POST['tanggal_terbit'];
-    $penerbit = $_POST['penerbit'];
-    $penulis = $_POST['penulis'];
-
+    $tanggal_peminjaman = $_POST['tanggal_peminjaman'];
+    $tanggal_kembali = $_POST['tanggal_kembali'];
+    
     // Melakukan sanitasi input
     $kode_buku = $conn->real_escape_string($kode_buku);
     $judul = $conn->real_escape_string($judul);

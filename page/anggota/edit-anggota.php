@@ -1,10 +1,14 @@
 <?php
-require_once("../../function/koneksi.php"); 
+require_once("../../function/koneksi.php");
 session_start();
 
-$query = "SELECT peminjamans.kode_peminjaman, anggotas.kode_anggota, anggotas.nama, books.kode_buku, books.judul, peminjamans.tanggal_peminjaman, peminjamans.tanggal_kembali FROM peminjamans JOIN anggotas on peminjamans.kode_anggota = anggotas.kode_anggota JOIN books on peminjamans.kode_buku = books.kode_buku;";
+$query = "SELECT * FROM anggotas;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
+
+
+
+
 ?>
 
 
@@ -22,13 +26,11 @@ $no = 0;
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Daftar Peminjaman</title>
+    <title>Edit Buku</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -157,7 +159,7 @@ $no = 0;
             </li>
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider d-none d-md-block"> -->
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <!-- <div class="text-center d-none d-md-inline">
@@ -184,11 +186,9 @@ $no = 0;
                     </form>
 
                     <!-- Topbar Search -->
-                    <!-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -202,18 +202,14 @@ $no = 0;
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -226,15 +222,13 @@ $no = 0;
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -277,22 +271,19 @@ $no = 0;
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -303,8 +294,7 @@ $no = 0;
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -315,8 +305,7 @@ $no = 0;
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="../../assets/img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -327,8 +316,7 @@ $no = 0;
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -345,15 +333,12 @@ $no = 0;
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../../assets/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="../../assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -383,73 +368,32 @@ $no = 0;
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Daftar Peminjaman</h1>
-                    
+                    <h1 class="h3 mb-2 text-gray-800">Edit Anggota</h1>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                            <a type="button" class="btn btn-primary" href="kelola-peminjaman.php">
-                                Tambah <i class="fas fa-plus"></i>
-                            </a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Peminjam</th>
-                                            <th>Judul Buku</th>
-                                            <th>Tanggal Peminjaman</th>
-                                            <th>Tanggal Kembali</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Peminjam</th>
-                                            <th>Judul Buku</th>
-                                            <th>Tanggal Peminjaman</th>
-                                            <th>Tanggal Kembali</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <?php
-                                        while ($result = mysqli_fetch_assoc($sql)) {
-                                        ?>
-                                            <td>
-                                                <?php echo ++$no; ?>.
-                                            </td>
-                                            <td>
-                                                <?php echo $result['nama']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['judul']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['tanggal_peminjaman']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['tanggal_kembali']; ?>
-                                            </td>
-                                            <!-- Button UBAH dan HAPUS-->
-                                            <td>
-                                                <a href="kelolabuku.php?ubah=<?php echo $result['kode_peminjaman']; ?>" type="button" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-pen"></i>
-                                                </a>
-                                                <a href="prosesbuku.php?hapus=<?php echo $result['kode_peminjaman']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Ingin menghapus data tersebut?')">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </td>
-                                            </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                <form action="tambah-anggota.php" method="post">
+                                    <div class="form-group">
+                                        <label for="nama">Nama Anggota</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Anggota" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alamat_lahir">Tanggal_lahir</label>
+                                        <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alamat">Alamat</label>
+                                        <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat" required>
+                                    </div>
+                                    <div>
+                                        <a href="daftar-anggota.php" class="btn btn-danger float-right ml-2">Batal</a>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -482,8 +426,7 @@ $no = 0;
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -502,7 +445,7 @@ $no = 0;
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../assetsvendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -517,6 +460,8 @@ $no = 0;
 
     <!-- Page level custom scripts -->
     <script src="../../assets/js/demo/datatables-demo.js"></script>
+
+    <script src="../../assets/js/snippets.js"></script>
 
 </body>
 

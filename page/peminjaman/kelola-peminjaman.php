@@ -2,9 +2,8 @@
 require_once("../../function/koneksi.php");
 session_start();
 
-$query = "SELECT * FROM peminjamans;";
-$sql = mysqli_query($conn, $query);
-$no = 0;
+$sql1 = "SELECT kode_buku, judul FROM books";
+$result1 = $conn->query($sql1);
 ?>
 
 
@@ -370,21 +369,40 @@ $no = 0;
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="#" class="login-active" method="POST">
-                                    <div class="form-group mb-3">
-                                        <label class="font-weight-bold">Judul Buku</label>
-                                        <input type="judul" name="judul" class="form-control form-control-user form-input" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Judul Buku">
+                                <form action="tambah-buku.php" method="post">
+                                    <div class="form-group">
+                                        <label for="nama">Nama Peminjaman</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Peminjam" required>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <select type="genre" name="genre" class="form-control form-control-user form-input" id="exampleInputPassword" placeholder="Genre">
+                                    <div class="form-group">
+                                        <label for="judul">Buku</label>
+                                        <select required id="kode_buku" name="kode_buku" class="form-control">
+                                            <?php
+                                            if ($result1->num_rows > 0) {
+                                                while ($row = $result1->fetch_assoc()) {
+                                                    $selected = ($row['kode_buku'] == $id_buku) ? "selected" : "";
+                                                    echo "<option $selected value='" . $row["kode_buku"] . "'>" . $row["kode_buku"] . " - " . $row["judul"] . "</option>";
+                                                }
+                                            } else {
+                                                echo "0 hasil";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <input type="date" name="date" class="form-control form-control-user form-input" id="exampleInputPassword">
+                                    <div class="form-group">
+                                        <label for="date">Tanggal Peminjaman</label>
+                                        <input type="date" name="tanggal_peminjaman" class="form-control" id="tanggal_peminjaman" required>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <input type="date" name="penerbit" class="form-control form-control-user form-input" id="exampleInputPassword" placeholder="Penerbit">
+                                    <div class="form-group">
+                                        <label for="date">Tanggal Kembali</label>
+                                        <input type="date" name="tanggal_kembali" class="form-control" id="tanggal_kembali" required>
                                     </div>
-                                    <button type="submit" name="submit" class="btn btn-success float-right">Simpan</button>
+                                    <div>
+                                        <a href="daftar-peminjaman.php" class="btn btn-danger float-right ml-2">Batal</a>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

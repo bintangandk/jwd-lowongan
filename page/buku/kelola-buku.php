@@ -401,7 +401,12 @@ $no = 0;
                                         <label for="penulis">Penulis</label>
                                         <input type="text" name="penulis" class="form-control" id="penulis" placeholder="Penulis" required>
                                     </div>
-                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    <div>
+                                        <a href="daftar-buku.php" class="btn btn-danger float-right ml-2">Batal</a>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

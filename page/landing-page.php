@@ -8,7 +8,7 @@
     <meta name="author" content="" />
     <title>Landing Page</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
     <!-- Custom Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,7 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -61,7 +61,7 @@
                             <div class="profile bg-gradient-primary-to-secondary">
                                 <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
                                 <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                <img class="profile-img" src="assets/img/einstein.png" alt="..." />
+                                <img class="profile-img" src="../assets/img/einstein.png" alt="..." />
                                 <div class="dots-1">
                                     <!-- SVG Dots-->
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
@@ -194,17 +194,17 @@
         <div class="row row-cols-1 row-cols-md-3 g-2"> <!-- Mengurangi jarak grid -->
             <div class="col">
                 <div class="card w-75 mx-auto"> <!-- Memperbesar ukuran card -->
-                    <img src="assets/img/book-1.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/book-1.jpg" class="card-img-top" alt="...">
                 </div>
             </div>
             <div class="col">
                 <div class="card w-75 mx-auto"> <!-- Memperbesar ukuran card -->
-                    <img src="assets/img/book-2.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/book-2.jpg" class="card-img-top" alt="...">
                 </div>
             </div>
             <div class="col">
                 <div class="card w-75 mx-auto"> <!-- Memperbesar ukuran card -->
-                    <img src="assets/img/book-3.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/book-3.jpg" class="card-img-top" alt="...">
                 </div>
             </div>
         </div>
@@ -249,7 +249,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="assets/js/scripts.js"></script>
+    <script src="../assets/js/scripts.js"></script>
 </body>
 
 </html>
