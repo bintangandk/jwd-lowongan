@@ -1,55 +1,7 @@
 <?php
 
-require_once("../function/koneksi.php");
+require_once("../../function/koneksi.php");
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT id, username, role FROM users WHERE username = ? AND password = ?";
-    
-  
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ss', $username, $password); 
-    
-   
-    $stmt->execute();
-    
-    
-    $stmt->bind_result($user_id, $db_username, $db_role); 
-    
-    
-    $stmt->fetch();
-    
-    
-    if ($db_username == $username && $db_role == 'admin') {
-        session_start();
-        $_SESSION['username'] = $username;
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['role'] = 'admin';
-
-        
-        header("Location: dashboard.php");
-        exit();
-    } elseif ($db_username == $username && $db_role == 'user') {
-        // Login berhasil sebagai user, atur session
-        session_start();
-        $_SESSION['username'] = $username;
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['role'] = 'user';
-
-        // Redirect ke halaman user setelah login berhasil
-        header("Location: user/lowongan.php");
-        exit();
-    } else {
-        // Login gagal
-        echo "Username atau password salah.";
-    }
-    
-    // Tutup statement
-    $stmt->close();
-}
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -92,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form action="login.php" class="login-active" method="POST">
+                                    <form action="../../process/login-process.php" class="login-active" method="POST">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user form-input" id="username" aria-describedby="emailHelp" placeholder="Enter Username...">
                                         </div>
@@ -135,14 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../assets/js/sb-admin-2.min.js"></script>
+    <script src="../../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 

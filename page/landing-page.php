@@ -1,3 +1,9 @@
+<?php 
+session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +69,7 @@
                             <a class="btn p-0 text-primary me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                         <div class="ms-3">
-                            <a href="login.php">Login</a>
+                            <a href="auth/login.php">Login</a>
                         </div>
                     </div>
                 </div>

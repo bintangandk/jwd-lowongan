@@ -66,7 +66,7 @@
 
             <!-- Nav Item - Daftar Buku -->
             <li class="nav-item">
-                <a class="nav-link" href="../page/lowongan/daftar-lowongan.php">
+                <a class="nav-link" href="../page/admin/daftar-lowongan.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Daftar Lowongan</span></a>
             </li>
@@ -515,7 +515,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout-process.php">Logout</a>
+                    <a class="btn btn-primary" href="/process/logout-process.php">Logout</a>
                 </div>
             </div>
         </div>
