@@ -1,38 +1,56 @@
-<?php 
-    require_once("../function/koneksi.php");
+<?php
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
+require_once("../function/koneksi.php");
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT id, username, role FROM users WHERE username = ? AND password = ?";
     
-        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-        $result = $conn->query($sql);
+  
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ss', $username, $password); 
     
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['password'])) {
-                
-                session_start();
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['role'] = $row['role'];
-                echo "Login successful!";
-                if ($row['role'] == 'admin') {
-                    header("Location: dahsboard.php");
-                } else {
-                    header("Location: index.html");
-                }
-            } else {
-                echo "Invalid password!";
-            }
-        } else {
-            echo "No user found with that username!";
-        }
+   
+    $stmt->execute();
+    
+    
+    $stmt->bind_result($user_id, $db_username, $db_role); 
+    
+    
+    $stmt->fetch();
+    
+    
+    if ($db_username == $username && $db_role == 'admin') {
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['role'] = 'admin';
+
+        
+        header("Location: dashboard.php");
+        exit();
+    } elseif ($db_username == $username && $db_role == 'user') {
+        // Login berhasil sebagai user, atur session
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['role'] = 'user';
+
+        // Redirect ke halaman user setelah login berhasil
+        header("Location: user/lowongan.php");
+        exit();
+    } else {
+        // Login gagal
+        echo "Username atau password salah.";
     }
     
-    $conn->close();
-    ?>
+    // Tutup statement
+    $stmt->close();
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +94,10 @@
                                     </div>
                                     <form action="login.php" class="login-active" method="POST">
                                         <div class="form-group">
-                                            <input type="username" name="username" class="form-control form-control-user form-input" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Enter Username...">
+                                            <input type="text" name="username" class="form-control form-control-user form-input" id="username" aria-describedby="emailHelp" placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user form-input" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user form-input" id="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -89,13 +107,13 @@
                                             </div>
                                         </div>
                                         <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                                        <hr>
+                                        <!-- <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        </a> -->
                                     </form>
                                     <hr>
                                     <!-- <div class="text-center">
