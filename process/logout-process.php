@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 
-header("Location: landing-page.php");
+header("Location: ../page/landing-page.php");
 exit();
 ?>
